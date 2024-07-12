@@ -142,7 +142,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
       approvers          = param.approvers
       detect_msg         = format("Detected %s with incorrect tags.%s%s", step.transform.display_name.value, step.transform.display_old_tags.value, step.transform.display_new_tags.value)
       default_action     = param.default_action
-      enabled_actions    = ["skip"] // TODO: Remediate Once Pipeline in place for Apply ["skip", "apply"]
+      enabled_actions    = ["skip", "apply"]
       actions = {
         "skip" = {
           label        = "Skip"
@@ -157,16 +157,20 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           success_msg = ""
           error_msg   = ""
         }
-      // TODO: Remediate Once Pipeline in place for Apply
-      //  "apply" = {
-      //     label        = "Apply"
-      //     value        = "apply"
-      //     style        = local.style_ok
-      //     pipeline_ref = // TODO: Add Pipeline Reference
-      //     pipeline_args = {} // TODO: Add Pipeline Args
-      //     success_msg = "Applied changes to tags on ${param.title}."
-      //     error_msg   = "Error applying changes to tags on ${param.title}."
-      //   }
+       "apply" = {
+          label        = "Apply"
+          value        = "apply"
+          style        = local.style_ok
+          pipeline_ref = local.pipeline_azure_tag_resource
+          pipeline_args = {
+            cred        = param.cred
+            resource_id = param.id
+            tags        = param.new_tags
+            incremental = false
+          }
+          success_msg = "Applied changes to tags on ${param.title}."
+          error_msg   = "Error applying changes to tags on ${param.title}."
+        }
       }
     }
   }

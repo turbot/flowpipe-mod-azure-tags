@@ -32,7 +32,7 @@ locals {
 // Pipeline References
 locals {
   pipeline_optional_message    = detect_correct.pipeline.optional_message
-  // TODO: Add Azure Tag Pipelines
+  pipeline_azure_tag_resource  = azure.pipeline.tag_resources
 }
 
 locals {
