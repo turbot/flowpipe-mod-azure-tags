@@ -513,9 +513,9 @@ Firsty, we need to update our `tags.fpvars` file to add or update the following 
 ```hcl
 # tags.fpvars
 
-storage_accounts_with_incorrect_tags_trigger_enabled   = true
-storage_accounts_with_incorrect_tags_trigger_scheduled = "1h"
-incorrect_tags_default_action                          = "apply"
+storage_accounts_with_incorrect_tags_trigger_enabled  = true
+storage_accounts_with_incorrect_tags_trigger_schedule = "1h"
+incorrect_tags_default_action                         = "apply"
 
 base_tag_rules = ... # omitted for brevity
 ```
