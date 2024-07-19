@@ -1,7 +1,7 @@
 trigger "query" "detect_and_correct_batch_accounts_with_incorrect_tags" {
   title       = "Detect & correct Batch accounts with incorrect tags"
   description = "Detects Batch accounts with incorrect tags and optionally attempts to correct them."
-  tags        = local.batch_account_common_tags
+  tags        = local.batch_common_tags
 
   enabled  = var.batch_accounts_with_incorrect_tags_trigger_enabled
   schedule = var.batch_accounts_with_incorrect_tags_trigger_schedule
@@ -19,7 +19,7 @@ trigger "query" "detect_and_correct_batch_accounts_with_incorrect_tags" {
 pipeline "detect_and_correct_batch_accounts_with_incorrect_tags" {
   title       = "Detect & correct Batch accounts with incorrect tags"
   description = "Detects Batch accounts with incorrect tags and optionally attempts to correct them."
-  tags        = merge(local.batch_account_common_tags, {
+  tags        = merge(local.batch_common_tags, {
     type = "featured"
   })
 
