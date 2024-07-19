@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_network_application_security_groups_with_incorrect_tags" {
-  title       = "Detect & correct Network Application Security Groups with incorrect tags"
-  description = "Detects Network Application Security Groups with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network application security groups with incorrect tags"
+  description = "Detects Network application security groups with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.network_application_security_groups_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_network_application_security_groups_with_inc
 }
 
 pipeline "detect_and_correct_network_application_security_groups_with_incorrect_tags" {
-  title       = "Detect & correct Network Application Security Groups with incorrect tags"
-  description = "Detects Network Application Security Groups with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network application security groups with incorrect tags"
+  description = "Detects Network application security groups with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, {
     type = "featured"
   })

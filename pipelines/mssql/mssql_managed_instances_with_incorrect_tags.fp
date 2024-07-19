@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_mssql_managed_instances_with_incorrect_tags" {
-  title       = "Detect & correct Microsoft SQL Managed Instances with incorrect tags"
-  description = "Detects Microsoft SQL Managed Instances with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Microsoft SQL managed instances with incorrect tags"
+  description = "Detects Microsoft SQL managed instances with incorrect tags and optionally attempts to correct them."
   tags        = local.mssql_common_tags
 
   enabled  = var.mssql_managed_instances_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_mssql_managed_instances_with_incorrect_tags"
 }
 
 pipeline "detect_and_correct_mssql_managed_instances_with_incorrect_tags" {
-  title       = "Detect & correct Microsoft SQL Managed Instances with incorrect tags"
-  description = "Detects Microsoft SQL Managed Instances with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Microsoft SQL managed instances with incorrect tags"
+  description = "Detects Microsoft SQL managed instances with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.mssql_common_tags, {
     type = "featured"
   })

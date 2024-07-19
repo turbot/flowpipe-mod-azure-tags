@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_network_public_ips_with_incorrect_tags" {
-  title       = "Detect & correct Network Public IPs with incorrect tags"
-  description = "Detects Network Public IPs with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network public IPs with incorrect tags"
+  description = "Detects Network public IPs with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.network_public_ips_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_network_public_ips_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_network_public_ips_with_incorrect_tags" {
-  title       = "Detect & correct Network Public IPs with incorrect tags"
-  description = "Detects Network Public IPs with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network public IPs with incorrect tags"
+  description = "Detects Network public IPs with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, {
     type = "featured"
   })

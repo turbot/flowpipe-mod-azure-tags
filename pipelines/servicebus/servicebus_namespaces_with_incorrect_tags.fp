@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_servicebus_namespaces_with_incorrect_tags" {
-  title       = "Detect & correct ServiceBus Namespaces with incorrect tags"
-  description = "Detects ServiceBus Namespaces with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct ServiceBus namespaces with incorrect tags"
+  description = "Detects ServiceBus namespaces with incorrect tags and optionally attempts to correct them."
   tags        = local.servicebus_common_tags
 
   enabled  = var.servicebus_namespaces_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_servicebus_namespaces_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_servicebus_namespaces_with_incorrect_tags" {
-  title       = "Detect & correct ServiceBus Namespaces with incorrect tags"
-  description = "Detects ServiceBus Namespaces with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct ServiceBus namespaces with incorrect tags"
+  description = "Detects ServiceBus namespaces with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.servicebus_common_tags, {
     type = "featured"
   })

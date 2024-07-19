@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_network_firewalls_with_incorrect_tags" {
-  title       = "Detect & correct Network Firewalls with incorrect tags"
-  description = "Detects Network Firewalls with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network firewalls with incorrect tags"
+  description = "Detects Network firewalls with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.network_firewalls_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_network_firewalls_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_network_firewalls_with_incorrect_tags" {
-  title       = "Detect & correct Network Firewalls with incorrect tags"
-  description = "Detects Network Firewalls with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network firewalls with incorrect tags"
+  description = "Detects Network firewalls with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, {
     type = "featured"
   })

@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_app_service_plans_with_incorrect_tags" {
-  title       = "Detect & correct App Service Plans with incorrect tags"
-  description = "Detects App Service Plans with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct App Service plans with incorrect tags"
+  description = "Detects App Service plans with incorrect tags and optionally attempts to correct them."
   tags        = local.app_ervice_common_tags
 
   enabled  = var.app_service_plans_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_app_service_plans_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_app_service_plans_with_incorrect_tags" {
-  title       = "Detect & correct App Service Plans with incorrect tags"
-  description = "Detects App Service Plans with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct App Service plans with incorrect tags"
+  description = "Detects App Service plans with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.app_ervice_common_tags, {
     type = "featured"
   })

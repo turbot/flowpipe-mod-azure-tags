@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_mssql_elasticpools_with_incorrect_tags" {
-  title       = "Detect & correct Microsoft SQL Elastic Pools with incorrect tags"
-  description = "Detects Microsoft SQL Elastic Pools with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Microsoft SQL elastic pools with incorrect tags"
+  description = "Detects Microsoft SQL elastic pools with incorrect tags and optionally attempts to correct them."
   tags        = local.mssql_common_tags
 
   enabled  = var.mssql_elasticpools_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_mssql_elasticpools_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_mssql_elasticpools_with_incorrect_tags" {
-  title       = "Detect & correct Microsoft SQL Elastic Pools with incorrect tags"
-  description = "Detects Microsoft SQL Elastic Pools with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Microsoft SQL elastic pools with incorrect tags"
+  description = "Detects Microsoft SQL elastic pools with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.mssql_common_tags, {
     type = "featured"
   })

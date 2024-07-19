@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_mariadb_servers_with_incorrect_tags" {
-  title       = "Detect & correct MariaDB Servers with incorrect tags"
-  description = "Detects MariaDB Servers with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct MariaDB servers with incorrect tags"
+  description = "Detects MariaDB servers with incorrect tags and optionally attempts to correct them."
   tags        = local.mariadb_common_tags
 
   enabled  = var.mariadb_servers_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_mariadb_servers_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_mariadb_servers_with_incorrect_tags" {
-  title       = "Detect & correct MariaDB Servers with incorrect tags"
-  description = "Detects MariaDB Servers with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct MariaDB servers with incorrect tags"
+  description = "Detects MariaDB servers with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.mariadb_common_tags, {
     type = "featured"
   })

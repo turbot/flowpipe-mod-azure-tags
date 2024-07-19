@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_sql_databases_with_incorrect_tags" {
-  title       = "Detect & correct SQL Databases with incorrect tags"
-  description = "Detects SQL Databases with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct SQL databases with incorrect tags"
+  description = "Detects SQL databases with incorrect tags and optionally attempts to correct them."
   tags        = local.sql_common_tags
 
   enabled  = var.sql_databases_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_sql_databases_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_sql_databases_with_incorrect_tags" {
-  title       = "Detect & correct SQL Databases with incorrect tags"
-  description = "Detects SQL Databases with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct SQL databases with incorrect tags"
+  description = "Detects SQL databases with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.sql_common_tags, {
     type = "featured"
   })
