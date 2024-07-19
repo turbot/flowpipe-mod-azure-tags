@@ -57,8 +57,8 @@ with tags as (
     subscription_id,
     sp_connection_name as cred,
     coalesce(tags, '{}'::jsonb) as tags,
-    key,
-    value
+    t.key,
+    t.value
   from
     __TABLE_NAME__
   left join
