@@ -1,14 +1,116 @@
 ## Core options
-#database           = "postgres:#steampipe@localhost:9193/steampipe"
-#notifier           = "default"
-#notification_level = "info"
-#approvers          = []
-#max_concurrency    = 1
+database           = "postgres:#steampipe@localhost:9193/steampipe"
+notifier           = "default"
+notification_level = "info"
+approvers          = ["default"]
+max_concurrency    = 1
 
-#base_tag_rules = {
-#  add           = {}
-#  remove        = []
-#  remove_except = []
-#  update_keys   = {}
-#  update_values = {}
-#}
+incorrect_tags_default_action = "notify"
+
+base_tag_rules = {
+  add           = {}
+  remove        = []
+  remove_except = []
+  update_keys   = {}
+  update_values = {}
+}
+
+# compute_availability_sets_tag_rules = {}
+# compute_availability_sets_with_incorrect_tags_trigger_enabled = false
+# compute_availability_sets_with_incorrect_tags_trigger_schedule = "15m"
+
+# compute_disk_encryption_sets_tag_rules = {}
+# compute_disk_encryption_sets_with_incorrect_tags_trigger_enabled = false
+# compute_disk_encryption_sets_with_incorrect_tags_trigger_schedule = "15m"
+
+# compute_disks_tag_rules = {}
+# compute_disks_with_incorrect_tags_trigger_enabled = false
+# compute_disks_with_incorrect_tags_trigger_schedule = "15m"
+
+# compute_images_tag_rules = {}
+# compute_images_with_incorrect_tags_trigger_enabled = false
+# compute_images_with_incorrect_tags_trigger_schedule = "15m"
+
+# compute_snapshots_tag_rules = {}
+# compute_snapshots_with_incorrect_tags_trigger_enabled = false
+# compute_snapshots_with_incorrect_tags_trigger_schedule = "15m"
+
+# compute_virtual_machine_scale_sets_tag_rules = {}
+# compute_virtual_machine_scale_sets_with_incorrect_tags_trigger_enabled = false
+# compute_virtual_machine_scale_sets_with_incorrect_tags_trigger_schedule = "15m"
+
+# compute_virtual_machines_tag_rules = {}
+# compute_virtual_machines_with_incorrect_tags_trigger_enabled = false
+# compute_virtual_machines_with_incorrect_tags_trigger_schedule = "15m"
+
+# container_registries_tag_rules = {}
+# container_registries_with_incorrect_tags_trigger_enabled = false
+# container_registries_with_incorrect_tags_trigger_schedule = "15m"
+
+# cosmosdb_accounts_tag_rules = {}
+# cosmosdb_accounts_with_incorrect_tags_trigger_enabled = false
+# cosmosdb_accounts_with_incorrect_tags_trigger_schedule = "15m"
+
+# cosmosdb_mongo_databases_tag_rules = {}
+# cosmosdb_mongo_databases_with_incorrect_tags_trigger_enabled = false
+# cosmosdb_mongo_databases_with_incorrect_tags_trigger_schedule = "15m"
+
+# cosmosdb_sql_databases_tag_rules = {}
+# cosmosdb_sql_databases_with_incorrect_tags_trigger_enabled = false
+# cosmosdb_sql_databases_with_incorrect_tags_trigger_schedule = "15m"
+
+# key_vault_deleted_vaults_tag_rules = {}
+# key_vault_deleted_vaults_with_incorrect_tags_trigger_enabled = false
+# key_vault_deleted_vaults_with_incorrect_tags_trigger_schedule = "15m"
+
+# key_vault_keys_tag_rules = {}
+# key_vault_keys_with_incorrect_tags_trigger_enabled = false
+# key_vault_keys_with_incorrect_tags_trigger_schedule = "15m"
+
+# key_vault_managed_hardware_security_module_tag_rules = {}
+# key_vault_managed_hardware_security_module_with_incorrect_tags_trigger_enabled = false
+# key_vault_managed_hardware_security_module_with_incorrect_tags_trigger_schedule = "15m"
+
+# key_vault_secrets_tag_rules = {}
+# key_vault_secrets_with_incorrect_tags_trigger_enabled = false
+# key_vault_secrets_with_incorrect_tags_trigger_schedule = "15m"
+
+# key_vault_vaults_tag_rules = {}
+# key_vault_vaults_with_incorrect_tags_trigger_enabled = false
+# key_vault_vaults_with_incorrect_tags_trigger_schedule = "15m"
+
+# kubernetes_clusters_tag_rules = {}
+# kubernetes_clusters_with_incorrect_tags_trigger_enabled = false
+# kubernetes_clusters_with_incorrect_tags_trigger_schedule = "15m"
+
+# network_interfaces_tag_rules = {}
+# network_interfaces_with_incorrect_tags_trigger_enabled = false
+# network_interfaces_with_incorrect_tags_trigger_schedule = "15m"
+
+# network_security_groups_tag_rules = {}
+# network_security_groups_with_incorrect_tags_trigger_enabled = false
+# network_security_groups_with_incorrect_tags_trigger_schedule = "15m"
+
+# network_watcher_flow_logs_tag_rules = {}
+# network_watcher_flow_logs_with_incorrect_tags_trigger_enabled = false
+# network_watcher_flow_logs_with_incorrect_tags_trigger_schedule = "15m"
+
+# network_watchers_tag_rules = {}
+# network_watchers_with_incorrect_tags_trigger_enabled = false
+# network_watchers_with_incorrect_tags_trigger_schedule = "15m"
+
+# postgresql_servers_tag_rules = {}
+# postgresql_servers_with_incorrect_tags_trigger_enabled = false
+# postgresql_servers_with_incorrect_tags_trigger_schedule = "15m"
+
+# storage_accounts_tag_rules = {}
+# storage_accounts_with_incorrect_tags_trigger_enabled = false
+# storage_accounts_with_incorrect_tags_trigger_schedule = "15m"
+
+# virtual_network_gateways_tag_rules = {}
+# virtual_network_gateways_with_incorrect_tags_trigger_enabled = false
+# virtual_network_gateways_with_incorrect_tags_trigger_schedule = "15m"
+
+# virtual_networks_tag_rules = {}
+# virtual_networks_with_incorrect_tags_trigger_enabled = false
+# virtual_networks_with_incorrect_tags_trigger_schedule = "15m"
