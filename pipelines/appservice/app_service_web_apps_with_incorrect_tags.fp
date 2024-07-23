@@ -1,7 +1,7 @@
 trigger "query" "detect_and_correct_app_service_web_apps_with_incorrect_tags" {
   title       = "Detect & correct App Service web apps with incorrect tags"
   description = "Detects App Service web apps with incorrect tags and optionally attempts to correct them."
-  tags        = local.app_ervice_common_tags
+  tags        = local.app_service_common_tags
 
   enabled  = var.app_service_web_apps_with_incorrect_tags_trigger_enabled
   schedule = var.app_service_web_apps_with_incorrect_tags_trigger_schedule
@@ -19,7 +19,7 @@ trigger "query" "detect_and_correct_app_service_web_apps_with_incorrect_tags" {
 pipeline "detect_and_correct_app_service_web_apps_with_incorrect_tags" {
   title       = "Detect & correct App Service web apps with incorrect tags"
   description = "Detects App Service web apps with incorrect tags and optionally attempts to correct them."
-  tags        = merge(local.app_ervice_common_tags, {
+  tags        = merge(local.app_service_common_tags, {
     type = "featured"
   })
 
