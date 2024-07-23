@@ -62,11 +62,11 @@ flowpipe mod install
 
 To start using this mod, you may need to configure some [input variables](https://flowpipe.io/docs/build/mod-variables#input-variables).
 
-The simplest way to do this is to copy the example file `tags.fpvars.example` to `tags.fpvars`, and then update the values as needed. Alternatively, you can pass the variables directly via the command line or environment variables. For more details on these methods, see [passing input variables](https://flowpipe.io/docs/build/mod-variables#passing-input-variables).
+The simplest way to do this is to copy the example file `flowpipe.fpvars.example` to `flowpipe.fpvars`, and then update the values as needed. Alternatively, you can pass the variables directly via the command line or environment variables. For more details on these methods, see [passing input variables](https://flowpipe.io/docs/build/mod-variables#passing-input-variables).
 
 ```sh
-cp tags.fpvars.example tags.fpvars
-vi tags.fpvars
+cp flowpipe.fpvars.example flowpipe.fpvars
+vi flowpipe.fpvars
 ```
 
 Whilst most [variables](https://hub.flowpipe.io/mods/turbot/azure_tags/variables) are set with sensible defaults, you will need to specify your own tagging rules either as a [base ruleset](#configuring-tag-rules), [resource-specific ruleset](#resource-specific-tag-rules) or a combination of both.
@@ -442,7 +442,7 @@ flowpipe pipeline list | grep "detect_and_correct"
 
 Then run your chosen pipeline, for example if we wish to remediate tags on our `storage accounts`:
 ```sh
-flowpipe pipeline run detect_and_correct_storage_accounts_with_incorrect_tags --var-file tags.fpvars
+flowpipe pipeline run detect_and_correct_storage_accounts_with_incorrect_tags --var-file flowpipe.fpvars
 ```
 
 This will then run the pipeline and depending on your configured running mode; perform the relevant action(s), there are 3 running modes:
@@ -461,7 +461,7 @@ This mode as the name implies is used purely to report detections via notificati
 To run in `notify` mode, you will need to set the `approvers` variable to an empty list `[]` and ensure the`incorrect_tags_default_action` variable is set to `notify`, either in your fpvars file
 
 ```hcl
-# tags.fpvars
+# flowpipe.fpvars
 approvers = []
 incorrect_tags_default_action = "notify"
 base_tag_rules = ... # omitted for brevity
@@ -470,7 +470,7 @@ base_tag_rules = ... # omitted for brevity
 or pass the `approvers` and `default_action` arguments on the command-line.
 
 ```sh
-flowpipe pipeline run detect_and_correct_storage_accounts_with_incorrect_tags --var-file tags.fpvars --arg='default_action=notify' --arg='approvers=[]'
+flowpipe pipeline run detect_and_correct_storage_accounts_with_incorrect_tags --var-file flowpipe.fpvars --arg='default_action=notify' --arg='approvers=[]'
 ```
 
 #### Automatic
@@ -479,7 +479,7 @@ This behavior allows for a hands-off approach to remediating (or ignoring) your 
 To run in `automatic` mode, you will need to set the `approvers` variable to an empty list `[]` and the `incorrect_tags_default_action` variable to either `skip` or `apply` in your fpvars file
 
 ```hcl
-# tags.fpvars
+# flowpipe.fpvars
 approvers = []
 incorrect_tags_default_action = "apply"
 base_tag_rules = ... # omitted for brevity
@@ -488,7 +488,7 @@ base_tag_rules = ... # omitted for brevity
 or pass the `default_action` argument on the command-line.
 
 ```sh
-flowpipe pipeline run detect_and_correct_storage_accounts_with_incorrect_tags --var-file tags.fpvars --arg='default_action=apply'
+flowpipe pipeline run detect_and_correct_storage_accounts_with_incorrect_tags --var-file flowpipe.fpvars --arg='default_action=apply'
 ```
 
 To further enhance this approach, you can enable the pipelines corresponding [query trigger](#running-query-triggers) to run completely hands-off.
@@ -501,10 +501,10 @@ Each `detect_and_correct` pipeline comes with a corresponding [Query Trigger](ht
 
 Let's begin by looking at how to set-up a Query Trigger to automatically resolve tagging violations with our storage accounts.
 
-Firsty, we need to update our `tags.fpvars` file to add or update the following variables - if we want to run our remediation `hourly` and automatically `apply` the corrections:
+Firsty, we need to update our `flowpipe.fpvars` file to add or update the following variables - if we want to run our remediation `hourly` and automatically `apply` the corrections:
 
 ```hcl
-# tags.fpvars
+# flowpipe.fpvars
 
 storage_accounts_with_incorrect_tags_trigger_enabled  = true
 storage_accounts_with_incorrect_tags_trigger_schedule = "1h"
@@ -516,7 +516,7 @@ base_tag_rules = ... # omitted for brevity
 Now we'll need to start up our Flowpipe server:
 
 ```sh
-flowpipe server --var-file=tags.fpvars
+flowpipe server --var-file=flowpipe.fpvars
 ```
 
 This will activate every hour and detect storage accounts with tagging violations and apply the corrections without further interaction!
