@@ -19,9 +19,7 @@ trigger "query" "detect_and_correct_data_factories_with_incorrect_tags" {
 pipeline "detect_and_correct_data_factories_with_incorrect_tags" {
   title       = "Detect & correct Data factories with incorrect tags"
   description = "Detects Data factories with incorrect tags and optionally attempts to correct them."
-  // tags        = merge(local.data_factory_common_tags, {
-  //   type = "featured"
-  // })
+  tags        = merge(local.data_factory_common_tags, { type = "featured" })
 
   param "database" {
     type        = string

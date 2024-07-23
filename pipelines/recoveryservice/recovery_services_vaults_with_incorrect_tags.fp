@@ -19,9 +19,7 @@ trigger "query" "detect_and_correct_recovery_services_vaults_with_incorrect_tags
 pipeline "detect_and_correct_recovery_services_vaults_with_incorrect_tags" {
   title       = "Detect & correct Recovery Services vaults with incorrect tags"
   description = "Detects Recovery Services vaults with incorrect tags and optionally attempts to correct them."
-  // tags        = merge(local.recovery_services_common_tags, {
-  //   type = "featured"
-  // })
+  tags        = merge(local.recovery_services_common_tags, { type = "featured" })
 
   param "database" {
     type        = string
