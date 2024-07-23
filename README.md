@@ -69,7 +69,7 @@ cp flowpipe.fpvars.example flowpipe.fpvars
 vi flowpipe.fpvars
 ```
 
-Whilst most [variables](https://hub.flowpipe.io/mods/turbot/azure_tags/variables) are set with sensible defaults, you will need to specify your own tagging rules either as a [base ruleset](#configuring-tag-rules), [resource-specific ruleset](#resource-specific-tag-rules) or a combination of both.
+While most [variables](https://hub.flowpipe.io/mods/turbot/azure_tags/variables) are set with sensible defaults, you will need to specify your own tagging rules either as a [base ruleset](#configuring-tag-rules), [resource-specific ruleset](#resource-specific-tag-rules) or a combination of both.
 
 ### Configuring Tag Rules
 
@@ -118,7 +118,7 @@ base_tag_rules = {
 
 However, the above will only cater to exact matches on those strings. This means we may miss tags like `Password` or `ssh_key` as these tags are in a different casing or contain extraneous characters. To achieve better matching we can use patterns along with [supported operators](#supported-operators) in the format `operator:pattern`.
 
-This would allow us to write rules which match more realistic cirumstances and remove tags that contain `password`, begin with `secret`, or end with `key` regardless of the casing.
+This would allow us to write rules which match more realistic circumstances and remove tags that contain `password`, begin with `secret`, or end with `key` regardless of the casing.
 
 ```hcl
 base_tag_rules = {
@@ -222,7 +222,7 @@ base_tag_rules = {
 }
 ```
 
-> Note: Whilst it is possible to have multiple `else:` patterns declared for any given tag, only the one with the first alphabetically sorted value (inner map key) will be used.
+> Note: While it is possible to have multiple `else:` patterns declared for any given tag, only the one with the first alphabetically sorted value (inner map key) will be used.
 
 In this configuration:
 
@@ -453,7 +453,7 @@ This will then run the pipeline and depending on your configured running mode; p
 #### Wizard
 This is the `default` running mode, allowing for a hands-on approach to approving changes to resource tags by prompting for [input](https://flowpipe.io/docs/build/input) for each resource detected violating the provided ruleset.
 
-Whilst the out of the box default is to run the workflow directly in the terminal. You can use Flowpipe [server](https://flowpipe.io/docs/run/server) and [external integrations](https://flowpipe.io/docs/build/input) to prompt in `http`, `slack`, `teams`, etc.
+While the out of the box default is to run the workflow directly in the terminal. You can use Flowpipe [server](https://flowpipe.io/docs/run/server) and [external integrations](https://flowpipe.io/docs/build/input) to prompt in `http`, `slack`, `teams`, etc.
 
 #### Notify
 This mode as the name implies is used purely to report detections via notifications either directly to your terminal when running in client mode or via another configured [notifier](https://flowpipe.io/docs/reference/config-files/notifier) when running in server mode for each resource that violated a tagging rule along with the suggested remedial action.
