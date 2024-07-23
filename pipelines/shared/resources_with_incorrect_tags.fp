@@ -1,6 +1,6 @@
 pipeline "correct_resources_with_incorrect_tags" {
   title       = "Correct resources with incorrect tags"
-  description = "" // TODO: Add Description
+  description = "Correct resources with incorrect tags"
 
   param "items" {
     type = list(object({
@@ -12,7 +12,7 @@ pipeline "correct_resources_with_incorrect_tags" {
       old_tags        = map(string)
       new_tags        = map(string)
     }))
-    description = "" // TODO: Add Description
+    description = local.description_items
   }
 
   param "notifier" {
@@ -61,41 +61,41 @@ pipeline "correct_resources_with_incorrect_tags" {
 
 pipeline "correct_one_resource_with_incorrect_tags" {
   title       = "Correct one resource with incorrect tags"
-  description = "" // TODO: Add Description
+  description = "Correct one resource with incorrect tags"
 
   param "title" {
     type        = string
-    description = "" // TODO: Add Description
+    description = "Title of the resource"
   }
 
   param "id" {
     type        = string
-    description = "" // TODO: Add Description
+    description = "ID of the resource"
   }
 
   param "region" {
     type        = string
-    description = "" // TODO: Add Description
+    description = "The region the resource is located in"
   }
 
   param "subscription_id" {
     type        = string
-    description = "" // TODO: Add Description
+    description = "ID of the subscription containing the resource"
   }
 
   param "cred" {
     type        = string
-    description = "" // TODO: Add Description
+    description = "Credential identifier"
   }
 
   param "old_tags" {
     type        = map(string)
-    description = "" // TODO: Add Description
+    description = "Map of tags prior to correction"
   }
 
   param "new_tags" {
     type        = map(string)
-    description = "" // TODO: Add Description
+    description = "Map of tags the correction should result in" 
   }
 
   param "notifier" {

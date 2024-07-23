@@ -27,6 +27,7 @@ locals {
   description_enabled_actions  = "The list of enabled actions to provide to approvers for selection."
   description_trigger_enabled  = "If true, the trigger is enabled."
   description_trigger_schedule = "The schedule on which to run the trigger if enabled."
+  description_items            = "A collection of detected resources to run corrective actions against."
 }
 
 // Pipeline References
