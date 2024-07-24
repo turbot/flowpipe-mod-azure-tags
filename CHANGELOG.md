@@ -3,10 +3,10 @@
 _What's new?_
 
 - Detect and correct misconfigured tags across 55+ Azure resource types.
-- Automatically add mandatory tags like `environment` and `owner` if they are missing.
-- Clean up prohibited tags such as `password`, `secret`, and `key`.
-- Reconcile shorthand or misspelled tag keys to standardized keys like `environment` and `cost_center`.
-- Update tag values to conform to expected standards, ensuring consistency.
+- Automatically add mandatory tags (e.g. `env`, `owner`).
+- Clean up prohibited tags (e.g. `secret`, `key`).
+- Reconcile shorthand or misspelled tag keys to standardized keys (e.g. `cc` to `cost_center`).
+- Update tag values to conform to expected standards, ensuring consistency (e.g. `Prod` to `prod`).
 
 For detailed usage information and a full list of pipelines, please see [Azure Tags Mod](https://hub.flowpipe.io/mods/turbot/azure_tags).
 
