@@ -2,4 +2,11 @@
 
 _What's new?_
 
-- Added 55+ pipelines to detect and correct Azure tags that are missing, prohibited, or otherwise unexpected across Compute, Cosmos DB, Key Vault, Kubernetes, Storage services, and more. For usage information and a full list of pipelines, please see [Azure Tags Mod](https://hub.flowpipe.io/mods/turbot/azure_tags).
+- Detect and correct misconfigured tags across 55+ Azure resource types.
+- Automatically add mandatory tags like `environment` and `owner` if they are missing.
+- Clean up prohibited tags such as `password`, `secret`, and `key`.
+- Reconcile shorthand or misspelled tag keys to standardized keys like `environment` and `cost_center`.
+- Update tag values to conform to expected standards, ensuring consistency.
+
+For detailed usage information and a full list of pipelines, please see [Azure Tags Mod](https://hub.flowpipe.io/mods/turbot/azure_tags).
+
