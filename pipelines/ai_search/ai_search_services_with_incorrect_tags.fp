@@ -19,7 +19,9 @@ trigger "query" "detect_and_correct_ai_search_services_with_incorrect_tags" {
 pipeline "detect_and_correct_ai_search_services_with_incorrect_tags" {
   title       = "Detect & correct AI Search services with incorrect tags"
   description = "Detects AI Search services with incorrect tags and optionally attempts to correct them."
-  tags        = merge(local.ai_search_common_tags, { type = "featured" })
+  tags        = merge(local.ai_search_common_tags, {
+    type = "featured"
+  })
 
   param "database" {
     type        = string
