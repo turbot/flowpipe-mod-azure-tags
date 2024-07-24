@@ -15,7 +15,7 @@ mod "azure_tags" {
       version = "*"
     }
     mod "github.com/turbot/flowpipe-mod-azure" {
-      version = "v0.2.0-rc.3"
+      version = "*"
     }
   }
 }
