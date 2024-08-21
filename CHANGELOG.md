@@ -1,3 +1,9 @@
+## v0.2.0 [2024-08-21]
+
+_What's new?_
+
+- Added a default value for the `base_tag_rules` variable. ([#18](https://github.com/turbot/flowpipe-mod-azure-tags/pull/18))
+
 ## v0.1.0 [2024-07-24]
 
 _What's new?_
