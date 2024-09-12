@@ -20,7 +20,7 @@ pipeline "detect_and_correct_key_vault_managed_hardware_security_module_with_inc
   title       = "Detect & correct Key Vault Managed Hardware Security Module with incorrect tags"
   description = "Detects Key Vault Managed Hardware Security Module with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.key_vault_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "key_vault_managed_hardware_security_module_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/KeyVault"
+  }
 }
 
 variable "key_vault_managed_hardware_security_module_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/KeyVault"
+  }
 }
 
 variable "key_vault_managed_hardware_security_module_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/KeyVault"
+  }
 }
 
 locals {
   key_vault_managed_hardware_security_module_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.key_vault_managed_hardware_security_module_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.key_vault_managed_hardware_security_module_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.key_vault_managed_hardware_security_module_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.key_vault_managed_hardware_security_module_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.key_vault_managed_hardware_security_module_tag_rules.update_keys, {}))

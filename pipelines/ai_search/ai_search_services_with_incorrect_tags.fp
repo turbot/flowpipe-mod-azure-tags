@@ -20,7 +20,7 @@ pipeline "detect_and_correct_ai_search_services_with_incorrect_tags" {
   title       = "Detect & correct AI Search services with incorrect tags"
   description = "Detects AI Search services with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.ai_search_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "ai_search_services_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/AISearch"
+  }
 }
 
 variable "ai_search_services_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/AISearch"
+  }
 }
 
 variable "ai_search_services_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/AISearch"
+  }
 }
 
 locals {

@@ -20,7 +20,7 @@ pipeline "detect_and_correct_express_route_circuits_with_incorrect_tags" {
   title       = "Detect & correct ExpressRoute circuits with incorrect tags"
   description = "Detects ExpressRoute circuits with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.express_route_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "express_route_circuits_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/ExpressRoute"
+  }
 }
 
 variable "express_route_circuits_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/ExpressRoute"
+  }
 }
 
 variable "express_route_circuits_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/ExpressRoute"
+  }
 }
 
 locals {
   express_route_circuits_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.express_route_circuits_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.express_route_circuits_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.express_route_circuits_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.express_route_circuits_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.express_route_circuits_tag_rules.update_keys, {}))

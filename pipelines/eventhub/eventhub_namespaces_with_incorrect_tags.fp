@@ -20,7 +20,7 @@ pipeline "detect_and_correct_eventhub_namespaces_with_incorrect_tags" {
   title       = "Detect & correct Event Hub namespaces with incorrect tags"
   description = "Detects Event Hub namespaces with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.eventhub_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "eventhub_namespaces_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/EventHub"
+  }
 }
 
 variable "eventhub_namespaces_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/EventHub"
+  }
 }
 
 variable "eventhub_namespaces_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/EventHub"
+  }
 }
 
 locals {
   eventhub_namespaces_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.eventhub_namespaces_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.eventhub_namespaces_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.eventhub_namespaces_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.eventhub_namespaces_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.eventhub_namespaces_tag_rules.update_keys, {}))

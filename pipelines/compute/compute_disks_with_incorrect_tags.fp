@@ -20,7 +20,7 @@ pipeline "detect_and_correct_compute_disks_with_incorrect_tags" {
   title       = "Detect & correct Compute Disks with incorrect tags"
   description = "Detects Compute Disks with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.compute_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "compute_disks_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/Compute"
+  }
 }
 
 variable "compute_disks_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/Compute"
+  }
 }
 
 variable "compute_disks_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/Compute"
+  }
 }
 
 locals {
   compute_disks_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.compute_disks_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.compute_disks_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.compute_disks_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.compute_disks_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.compute_disks_tag_rules.update_keys, {}))
