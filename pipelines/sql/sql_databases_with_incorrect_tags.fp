@@ -20,7 +20,7 @@ pipeline "detect_and_correct_sql_databases_with_incorrect_tags" {
   title       = "Detect & correct SQL databases with incorrect tags"
   description = "Detects SQL databases with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.sql_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "sql_databases_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/SQL"
+  }
 }
 
 variable "sql_databases_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/SQL"
+  }
 }
 
 variable "sql_databases_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/SQL"
+  }
 }
 
 locals {

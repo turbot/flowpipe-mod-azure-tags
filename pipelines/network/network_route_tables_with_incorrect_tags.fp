@@ -20,7 +20,7 @@ pipeline "detect_and_correct_network_route_tables_with_incorrect_tags" {
   title       = "Detect & correct Network route tables with incorrect tags"
   description = "Detects Network route tables with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "network_route_tables_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/Network"
+  }
 }
 
 variable "network_route_tables_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/Network"
+  }
 }
 
 variable "network_route_tables_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/Network"
+  }
 }
 
 locals {

@@ -20,7 +20,7 @@ pipeline "detect_and_correct_sql_servers_with_incorrect_tags" {
   title       = "Detect & correct SQL servers with incorrect tags"
   description = "Detects SQL servers with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.sql_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {

@@ -20,7 +20,7 @@ pipeline "detect_and_correct_data_lake_analytics_accounts_with_incorrect_tags" {
   title       = "Detect & correct Data lake analytics accounts with incorrect tags"
   description = "Detects Data lake analytics accounts with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.data_lake_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "data_lake_analytics_accounts_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/DataLake"
+  }
 }
 
 variable "data_lake_analytics_accounts_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/DataLake"
+  }
 }
 
 variable "data_lake_analytics_accounts_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/DataLake"
+  }
 }
 
 locals {
   data_lake_analytics_accounts_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.data_lake_analytics_accounts_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.data_lake_analytics_accounts_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.data_lake_analytics_accounts_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.data_lake_analytics_accounts_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.data_lake_analytics_accounts_tag_rules.update_keys, {}))

@@ -20,7 +20,7 @@ pipeline "detect_and_correct_servicebus_namespaces_with_incorrect_tags" {
   title       = "Detect & correct ServiceBus namespaces with incorrect tags"
   description = "Detects ServiceBus namespaces with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.servicebus_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "servicebus_namespaces_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/ServiceBus"
+  }
 }
 
 variable "servicebus_namespaces_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/ServiceBus"
+  }
 }
 
 variable "servicebus_namespaces_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/ServiceBus"
+  }
 }
 
 locals {

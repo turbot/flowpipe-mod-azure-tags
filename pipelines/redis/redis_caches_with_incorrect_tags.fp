@@ -20,7 +20,7 @@ pipeline "detect_and_correct_redis_caches_with_incorrect_tags" {
   title       = "Detect & correct Redis caches with incorrect tags"
   description = "Detects Redis caches with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.redis_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "redis_caches_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/Redis"
+  }
 }
 
 variable "redis_caches_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/Redis"
+  }
 }
 
 variable "redis_caches_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/Redis"
+  }
 }
 
 locals {

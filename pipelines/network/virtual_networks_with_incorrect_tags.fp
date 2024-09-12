@@ -20,7 +20,7 @@ pipeline "detect_and_correct_virtual_networks_with_incorrect_tags" {
   title       = "Detect & correct Virtual Networks with incorrect tags"
   description = "Detects Virtual Networks with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -96,7 +96,7 @@ variable "virtual_networks_with_incorrect_tags_trigger_schedule" {
 
 locals {
   virtual_networks_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.virtual_networks_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.virtual_networks_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.virtual_networks_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.virtual_networks_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.virtual_networks_tag_rules.update_keys, {}))

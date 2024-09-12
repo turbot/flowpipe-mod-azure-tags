@@ -20,7 +20,7 @@
 //   title       = "Detect & correct Stream Analytics jobs with incorrect tags"
 //   description = "Detects Stream Analytics jobs with incorrect tags and optionally attempts to correct them."
 //   tags        = merge(local.stream_analytics_common_tags, {
-//     type = "featured"
+//     type = "recommended"
 //   })
 
 //   param "database" {
@@ -96,7 +96,7 @@
 
 // locals {
 //   stream_analytics_jobs_tag_rules = {
-//     add           = merge(local.base_tag_rules.add, try(var.stream_analytics_jobs_tag_rules.add, {})) 
+//     add           = merge(local.base_tag_rules.add, try(var.stream_analytics_jobs_tag_rules.add, {}))
 //     remove        = distinct(concat(local.base_tag_rules.remove , try(var.stream_analytics_jobs_tag_rules.remove, [])))
 //     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.stream_analytics_jobs_tag_rules.remove_except, [])))
 //     update_keys   = merge(local.base_tag_rules.update_keys, try(var.stream_analytics_jobs_tag_rules.update_keys, {}))

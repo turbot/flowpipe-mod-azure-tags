@@ -20,7 +20,7 @@ pipeline "detect_and_correct_postgresql_servers_with_incorrect_tags" {
   title       = "Detect & correct PostgreSQL Servers with incorrect tags"
   description = "Detects PostgreSQL Servers with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.postgresql_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "postgresql_servers_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/PostgreSQL"
+  }
 }
 
 variable "postgresql_servers_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/PostgreSQL"
+  }
 }
 
 variable "postgresql_servers_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/PostgreSQL"
+  }
 }
 
 locals {
   postgresql_servers_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.postgresql_servers_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.postgresql_servers_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.postgresql_servers_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.postgresql_servers_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.postgresql_servers_tag_rules.update_keys, {}))

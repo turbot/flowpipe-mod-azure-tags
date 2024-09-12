@@ -19,7 +19,7 @@ trigger "query" "detect_and_correct_data_factories_with_incorrect_tags" {
 pipeline "detect_and_correct_data_factories_with_incorrect_tags" {
   title       = "Detect & correct Data factories with incorrect tags"
   description = "Detects Data factories with incorrect tags and optionally attempts to correct them."
-  tags        = merge(local.data_factory_common_tags, { type = "featured" })
+  tags        = merge(local.data_factory_common_tags, { type = "recommended" })
 
   param "database" {
     type        = string
@@ -78,23 +78,32 @@ variable "data_factories_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/DataFactory"
+  }
 }
 
 variable "data_factories_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/DataFactory"
+  }
 }
 
 variable "data_factories_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/DataFactory"
+  }
 }
 
 locals {
   data_factories_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.data_factories_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.data_factories_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.data_factories_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.data_factories_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.data_factories_tag_rules.update_keys, {}))

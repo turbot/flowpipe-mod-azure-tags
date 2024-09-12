@@ -20,7 +20,7 @@ pipeline "detect_and_correct_mssql_elasticpools_with_incorrect_tags" {
   title       = "Detect & correct Microsoft SQL elastic pools with incorrect tags"
   description = "Detects Microsoft SQL elastic pools with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.mssql_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "mssql_elasticpools_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/MicrosoftSQL"
+  }
 }
 
 variable "mssql_elasticpools_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/MicrosoftSQL"
+  }
 }
 
 variable "mssql_elasticpools_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/MicrosoftSQL"
+  }
 }
 
 locals {

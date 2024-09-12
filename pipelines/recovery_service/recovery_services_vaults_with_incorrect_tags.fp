@@ -20,7 +20,7 @@ pipeline "detect_and_correct_recovery_services_vaults_with_incorrect_tags" {
   title       = "Detect & correct Recovery Services vaults with incorrect tags"
   description = "Detects Recovery Services vaults with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.recovery_service_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "recovery_services_vaults_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/RecoveryService"
+  }
 }
 
 variable "recovery_services_vaults_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/RecoveryService"
+  }
 }
 
 variable "recovery_services_vaults_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/RecoveryService"
+  }
 }
 
 locals {

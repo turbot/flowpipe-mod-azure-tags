@@ -20,7 +20,7 @@ pipeline "detect_and_correct_mysql_servers_with_incorrect_tags" {
   title       = "Detect & correct MySQL servers with incorrect tags"
   description = "Detects MySQL servers with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.mysql_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,18 +80,27 @@ variable "mysql_servers_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/MySQL"
+  }
 }
 
 variable "mysql_servers_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/MySQL"
+  }
 }
 
 variable "mysql_servers_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/MySQL"
+  }
 }
 
 locals {

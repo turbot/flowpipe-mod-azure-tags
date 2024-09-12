@@ -20,7 +20,7 @@ pipeline "detect_and_correct_network_watcher_flow_logs_with_incorrect_tags" {
   title       = "Detect & correct Network Watcher Flow Logs with incorrect tags"
   description = "Detects Network Watcher Flow Logs with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, {
-    type = "featured"
+    type = "recommended"
   })
 
   param "database" {
@@ -80,23 +80,32 @@ variable "network_watcher_flow_logs_tag_rules" {
   })
   description = "Resource specific tag rules"
   default     = null
+  tags = {
+    folder = "Advanced/Network"
+  }
 }
 
 variable "network_watcher_flow_logs_with_incorrect_tags_trigger_enabled" {
   type        = bool
   default     = false
   description = "If true, the trigger is enabled."
+  tags = {
+    folder = "Advanced/Network"
+  }
 }
 
 variable "network_watcher_flow_logs_with_incorrect_tags_trigger_schedule" {
   type        = string
   default     = "15m"
   description = "The schedule on which to run the trigger if enabled."
+  tags = {
+    folder = "Advanced/Network"
+  }
 }
 
 locals {
   network_watcher_flow_logs_tag_rules = {
-    add           = merge(local.base_tag_rules.add, try(var.network_watcher_flow_logs_tag_rules.add, {})) 
+    add           = merge(local.base_tag_rules.add, try(var.network_watcher_flow_logs_tag_rules.add, {}))
     remove        = distinct(concat(local.base_tag_rules.remove , try(var.network_watcher_flow_logs_tag_rules.remove, [])))
     remove_except = distinct(concat(local.base_tag_rules.remove_except , try(var.network_watcher_flow_logs_tag_rules.remove_except, [])))
     update_keys   = merge(local.base_tag_rules.update_keys, try(var.network_watcher_flow_logs_tag_rules.update_keys, {}))
