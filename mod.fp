@@ -12,10 +12,10 @@ mod "azure_tags" {
   }
   require {
     mod "github.com/turbot/flowpipe-mod-detect-correct" {
-      version = "*"
+      version = "1.0.0-rc.0"
     }
     mod "github.com/turbot/flowpipe-mod-azure" {
-      version = "*"
+      version = "v1.0.0-rc.1"
     }
   }
 }

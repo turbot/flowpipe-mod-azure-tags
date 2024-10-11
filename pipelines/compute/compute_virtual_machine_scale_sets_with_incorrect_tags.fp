@@ -24,13 +24,13 @@ pipeline "detect_and_correct_compute_virtual_machine_scale_sets_with_incorrect_t
   })
 
   param "database" {
-    type        = string
+    type        = connection.steampipe
     description = local.description_database
     default     = var.database
   }
 
   param "notifier" {
-    type        = string
+    type        = notifier
     description = local.description_notifier
     default     = var.notifier
   }
@@ -42,7 +42,7 @@ pipeline "detect_and_correct_compute_virtual_machine_scale_sets_with_incorrect_t
   }
 
   param "approvers" {
-    type        = list(string)
+    type        = list(notifier)
     description = local.description_approvers
     default     = var.approvers
   }

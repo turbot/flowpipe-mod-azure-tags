@@ -8,7 +8,7 @@ pipeline "correct_resources_with_incorrect_tags" {
       id              = string
       region          = string
       subscription_id = string
-      cred            = string
+      conn            = string
       old_tags        = map(string)
       new_tags        = map(string)
     }))
@@ -16,7 +16,7 @@ pipeline "correct_resources_with_incorrect_tags" {
   }
 
   param "notifier" {
-    type        = string
+    type        = notifier
     description = local.description_notifier
     default     = var.notifier
   }
@@ -28,7 +28,7 @@ pipeline "correct_resources_with_incorrect_tags" {
   }
 
   param "approvers" {
-    type        = list(string)
+    type        = list(notifier)
     description = local.description_approvers
     default     = var.approvers
   }
@@ -48,7 +48,7 @@ pipeline "correct_resources_with_incorrect_tags" {
       id                 = each.value.id
       region             = each.value.region
       subscription_id    = each.value.subscription_id
-      cred               = each.value.cred
+      conn               = connection.azure[each.value.conn]
       old_tags           = each.value.old_tags
       new_tags           = each.value.new_tags
       notifier           = param.notifier
@@ -83,9 +83,9 @@ pipeline "correct_one_resource_with_incorrect_tags" {
     description = "ID of the subscription containing the resource"
   }
 
-  param "cred" {
+  param "conn" {
     type        = string
-    description = "Credential identifier"
+    description = local.description_connection
   }
 
   param "old_tags" {
@@ -99,7 +99,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
   }
 
   param "notifier" {
-    type        = string
+    type        = notifier
     description = local.description_notifier
     default     = var.notifier
   }
@@ -111,7 +111,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
   }
 
   param "approvers" {
-    type        = list(string)
+    type        = list(notifier)
     description = local.description_approvers
     default     = var.approvers
   }
@@ -163,7 +163,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           style        = local.style_ok
           pipeline_ref = local.pipeline_azure_tag_resource
           pipeline_args = {
-            cred        = param.cred
+            conn        = param.conn
             resource_id = param.id
             tags        = param.new_tags
             incremental = false

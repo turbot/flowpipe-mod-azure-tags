@@ -20,6 +20,7 @@ locals {
 locals {
   description_database         = "Database connection string."
   description_approvers        = "List of notifiers to be used for obtaining action/approval decisions."
+  description_connection       = "Name of the Azure connection to be used for any authenticated actions."
   description_max_concurrency  = "The maximum concurrency to use for responding to detection items."
   description_notifier         = "The name of the notifier to use for sending notification messages."
   description_notifier_level   = "The verbosity level of notification messages to send. Valid options are 'verbose', 'info', 'error'."
@@ -56,7 +57,7 @@ with tags as (
     id,
     region,
     subscription_id,
-    sp_connection_name as cred,
+    sp_connection_name as conn,
     coalesce(tags, '{}'::jsonb) as tags,
     t.key,
     t.value
@@ -149,7 +150,7 @@ select * from (
     t.id,
     t.region,
     t.subscription_id,
-    t.cred,
+    t.conn,
     t.tags as old_tags,
     jsonb_object_agg(uv.new_key, uv.updated_value) as new_tags
   from
@@ -161,7 +162,7 @@ select * from (
       select 1 from remove_tags rt where rt.id = uv.id and rt.key = uv.new_key
     )
   group by
-    t.title, t.id, t.region, t.subscription_id, t.cred, t.tags
+    t.title, t.id, t.region, t.subscription_id, t.conn, t.tags
 ) result
 where old_tags != new_tags;
   EOQ
