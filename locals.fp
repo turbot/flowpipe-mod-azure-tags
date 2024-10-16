@@ -31,12 +31,6 @@ locals {
   description_items            = "A collection of detected resources to run corrective actions against."
 }
 
-// Pipeline References
-locals {
-  pipeline_optional_message    = detect_correct.pipeline.optional_message
-  pipeline_azure_tag_resource  = azure.pipeline.tag_resources
-}
-
 locals {
   base_tag_rules = {
     add           = try(var.base_tag_rules.add, {})

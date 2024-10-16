@@ -148,7 +148,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           label        = "Skip"
           value        = "skip"
           style        = local.style_info
-          pipeline_ref = local.pipeline_optional_message
+          pipeline_ref = detect_correct.pipeline.optional_message
           pipeline_args = {
             notifier = param.notifier
             send     = param.notification_level == local.level_verbose
@@ -161,7 +161,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           label        = "Apply"
           value        = "apply"
           style        = local.style_ok
-          pipeline_ref = local.pipeline_azure_tag_resource
+          pipeline_ref = azure.pipeline.tag_resources
           pipeline_args = {
             conn        = param.conn
             resource_id = param.id
