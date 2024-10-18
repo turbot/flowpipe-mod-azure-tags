@@ -1,6 +1,7 @@
 pipeline "correct_resources_with_incorrect_tags" {
   title       = "Correct resources with incorrect tags"
   description = "Correct resources with incorrect tags"
+  tags        = { folder = "Internal" }
 
   param "items" {
     type = list(object({
@@ -63,6 +64,7 @@ pipeline "correct_resources_with_incorrect_tags" {
 pipeline "correct_one_resource_with_incorrect_tags" {
   title       = "Correct one resource with incorrect tags"
   description = "Correct one resource with incorrect tags"
+  tags        = { folder = "Internal" }
 
   param "title" {
     type        = string
