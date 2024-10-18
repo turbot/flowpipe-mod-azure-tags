@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_key_vault_managed_hardware_security_module_with_incorrect_tags" {
-  title       = "Detect & correct Key Vault Managed Hardware Security Module with incorrect tags"
-  description = "Detects Key Vault Managed Hardware Security Module with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Key Vault managed hardware security module with incorrect tags"
+  description = "Detects Key Vault managed hardware security module with incorrect tags and optionally attempts to correct them."
   tags        = local.key_vault_common_tags
 
   enabled  = var.key_vault_managed_hardware_security_module_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_key_vault_managed_hardware_security_module_w
 }
 
 pipeline "detect_and_correct_key_vault_managed_hardware_security_module_with_incorrect_tags" {
-  title       = "Detect & correct Key Vault Managed Hardware Security Module with incorrect tags"
-  description = "Detects Key Vault Managed Hardware Security Module with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Key Vault managed hardware security module with incorrect tags"
+  description = "Detects Key Vault managed hardware security module with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.key_vault_common_tags, { recommended = "true" })
 
   param "database" {

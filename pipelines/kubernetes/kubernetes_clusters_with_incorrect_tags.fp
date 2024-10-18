@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_kubernetes_clusters_with_incorrect_tags" {
-  title       = "Detect & correct Kubernetes Clusters with incorrect tags"
-  description = "Detects Kubernetes Clusters with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Kubernetes clusters with incorrect tags"
+  description = "Detects Kubernetes clusters with incorrect tags and optionally attempts to correct them."
   tags        = local.kubernetes_common_tags
 
   enabled  = var.kubernetes_clusters_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_kubernetes_clusters_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_kubernetes_clusters_with_incorrect_tags" {
-  title       = "Detect & correct Kubernetes Clusters with incorrect tags"
-  description = "Detects Kubernetes Clusters with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Kubernetes clusters with incorrect tags"
+  description = "Detects Kubernetes clusters with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.kubernetes_common_tags, { recommended = "true" })
 
   param "database" {

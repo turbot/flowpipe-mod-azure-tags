@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_postgresql_servers_with_incorrect_tags" {
-  title       = "Detect & correct PostgreSQL Servers with incorrect tags"
-  description = "Detects PostgreSQL Servers with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct PostgreSQL servers with incorrect tags"
+  description = "Detects PostgreSQL servers with incorrect tags and optionally attempts to correct them."
   tags        = local.postgresql_common_tags
 
   enabled  = var.postgresql_servers_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_postgresql_servers_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_postgresql_servers_with_incorrect_tags" {
-  title       = "Detect & correct PostgreSQL Servers with incorrect tags"
-  description = "Detects PostgreSQL Servers with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct PostgreSQL servers with incorrect tags"
+  description = "Detects PostgreSQL servers with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.postgresql_common_tags, { recommended = "true" })
 
   param "database" {

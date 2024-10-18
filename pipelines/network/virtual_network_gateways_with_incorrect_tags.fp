@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_virtual_network_gateways_with_incorrect_tags" {
-  title       = "Detect & correct Virtual Network Gateways with incorrect tags"
-  description = "Detects Virtual Network Gateways with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Virtual Network gateways with incorrect tags"
+  description = "Detects Virtual Network gateways with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.virtual_network_gateways_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_virtual_network_gateways_with_incorrect_tags
 }
 
 pipeline "detect_and_correct_virtual_network_gateways_with_incorrect_tags" {
-  title       = "Detect & correct Virtual Network Gateways with incorrect tags"
-  description = "Detects Virtual Network Gateways with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Virtual Network gateways with incorrect tags"
+  description = "Detects Virtual Network gateways with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, { recommended = "true" })
 
   param "database" {

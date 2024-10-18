@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_compute_disk_encryption_sets_with_incorrect_tags" {
-  title       = "Detect & correct Compute Disk Encryption Sets with incorrect tags"
-  description = "Detects Compute Disk Encryption Sets with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Compute disk encryption Sets with incorrect tags"
+  description = "Detects Compute disk encryption Sets with incorrect tags and optionally attempts to correct them."
   tags        = local.compute_common_tags
 
   enabled  = var.compute_disk_encryption_sets_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_compute_disk_encryption_sets_with_incorrect_
 }
 
 pipeline "detect_and_correct_compute_disk_encryption_sets_with_incorrect_tags" {
-  title       = "Detect & correct Compute Disk Encryption Sets with incorrect tags"
-  description = "Detects Compute Disk Encryption Sets with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Compute disk encryption Sets with incorrect tags"
+  description = "Detects Compute disk encryption Sets with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.compute_common_tags, { recommended = "true" })
 
   param "database" {

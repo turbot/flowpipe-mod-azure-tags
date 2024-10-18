@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_network_interfaces_with_incorrect_tags" {
-  title       = "Detect & correct Network Interfaces with incorrect tags"
-  description = "Detects Network Interfaces with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network interfaces with incorrect tags"
+  description = "Detects Network interfaces with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.network_interfaces_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_network_interfaces_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_network_interfaces_with_incorrect_tags" {
-  title       = "Detect & correct Network Interfaces with incorrect tags"
-  description = "Detects Network Interfaces with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network interfaces with incorrect tags"
+  description = "Detects Network interfaces with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, { recommended = "true" })
 
   param "database" {

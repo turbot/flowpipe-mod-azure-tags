@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_network_watcher_flow_logs_with_incorrect_tags" {
-  title       = "Detect & correct Network Watcher Flow Logs with incorrect tags"
-  description = "Detects Network Watcher Flow Logs with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network watcher flow logs with incorrect tags"
+  description = "Detects Network watcher flow logs with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.network_watcher_flow_logs_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_network_watcher_flow_logs_with_incorrect_tag
 }
 
 pipeline "detect_and_correct_network_watcher_flow_logs_with_incorrect_tags" {
-  title       = "Detect & correct Network Watcher Flow Logs with incorrect tags"
-  description = "Detects Network Watcher Flow Logs with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network watcher flow logs with incorrect tags"
+  description = "Detects Network watcher flow logs with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, { recommended = "true" })
 
   param "database" {

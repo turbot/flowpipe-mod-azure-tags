@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_container_registries_with_incorrect_tags" {
-  title       = "Detect & correct Container Registries with incorrect tags"
-  description = "Detects Container Registries with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Container registries with incorrect tags"
+  description = "Detects Container registries with incorrect tags and optionally attempts to correct them."
   tags        = local.container_common_tags
 
   enabled  = var.container_registries_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_container_registries_with_incorrect_tags" {
 }
 
 pipeline "detect_and_correct_container_registries_with_incorrect_tags" {
-  title       = "Detect & correct Container Registries with incorrect tags"
-  description = "Detects Container Registries with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Container registries with incorrect tags"
+  description = "Detects Container registries with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.container_common_tags, { recommended = "true" })
 
   param "database" {

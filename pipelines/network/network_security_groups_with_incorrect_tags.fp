@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_network_security_groups_with_incorrect_tags" {
-  title       = "Detect & correct Network Security Groups with incorrect tags"
-  description = "Detects Network Security Groups with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network security groups with incorrect tags"
+  description = "Detects Network security groups with incorrect tags and optionally attempts to correct them."
   tags        = local.network_common_tags
 
   enabled  = var.network_security_groups_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_network_security_groups_with_incorrect_tags"
 }
 
 pipeline "detect_and_correct_network_security_groups_with_incorrect_tags" {
-  title       = "Detect & correct Network Security Groups with incorrect tags"
-  description = "Detects Network Security Groups with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Network security groups with incorrect tags"
+  description = "Detects Network security groups with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.network_common_tags, { recommended = "true" })
 
   param "database" {

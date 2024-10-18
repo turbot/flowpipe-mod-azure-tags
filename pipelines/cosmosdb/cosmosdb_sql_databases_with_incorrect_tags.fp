@@ -1,6 +1,6 @@
 trigger "query" "detect_and_correct_cosmosdb_sql_databases_with_incorrect_tags" {
-  title       = "Detect & correct Cosmos DB SQL Databases with incorrect tags"
-  description = "Detects Cosmos DB SQL Databases with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Cosmos DB SQL databases with incorrect tags"
+  description = "Detects Cosmos DB SQL databases with incorrect tags and optionally attempts to correct them."
   tags        = local.cosmosdb_common_tags
 
   enabled  = var.cosmosdb_sql_databases_with_incorrect_tags_trigger_enabled
@@ -17,8 +17,8 @@ trigger "query" "detect_and_correct_cosmosdb_sql_databases_with_incorrect_tags" 
 }
 
 pipeline "detect_and_correct_cosmosdb_sql_databases_with_incorrect_tags" {
-  title       = "Detect & correct Cosmos DB SQL Databases with incorrect tags"
-  description = "Detects Cosmos DB SQL Databases with incorrect tags and optionally attempts to correct them."
+  title       = "Detect & correct Cosmos DB SQL databases with incorrect tags"
+  description = "Detects Cosmos DB SQL databases with incorrect tags and optionally attempts to correct them."
   tags        = merge(local.cosmosdb_common_tags, { recommended = "true" })
 
   param "database" {
