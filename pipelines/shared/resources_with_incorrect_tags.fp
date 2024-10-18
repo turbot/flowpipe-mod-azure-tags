@@ -37,6 +37,7 @@ pipeline "correct_resources_with_incorrect_tags" {
     type        = string
     description = local.description_default_action
     default     = var.incorrect_tags_default_action
+    enum        = local.incorrect_tags_default_action_enum
   }
 
   step "pipeline" "correct_one" {
@@ -95,7 +96,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
 
   param "new_tags" {
     type        = map(string)
-    description = "Map of tags the correction should result in" 
+    description = "Map of tags the correction should result in"
   }
 
   param "notifier" {
@@ -120,6 +121,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
     type        = string
     description = local.description_default_action
     default     = var.incorrect_tags_default_action
+    enum        = local.incorrect_tags_default_action_enum
   }
 
   step "transform" "display_name" {
@@ -157,7 +159,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           success_msg = ""
           error_msg   = ""
         }
-       "apply" = {
+        "apply" = {
           label        = "Apply"
           value        = "apply"
           style        = local.style_ok

@@ -31,6 +31,12 @@ locals {
   description_items            = "A collection of detected resources to run corrective actions against."
 }
 
+// Default action enum
+
+locals {
+  incorrect_tags_default_action_enum = ["notify", "skil", "apply"]
+}
+
 locals {
   base_tag_rules = {
     add           = try(var.base_tag_rules.add, {})

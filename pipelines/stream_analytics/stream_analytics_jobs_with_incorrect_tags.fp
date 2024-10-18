@@ -20,7 +20,7 @@
 //   title       = "Detect & correct Stream Analytics jobs with incorrect tags"
 //   description = "Detects Stream Analytics jobs with incorrect tags and optionally attempts to correct them."
 //   tags        = merge(local.stream_analytics_common_tags, {
-//     type = "recommended"
+//     recommended = "true"
 //   })
 
 //   param "database" {
