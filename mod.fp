@@ -17,10 +17,10 @@ mod "azure_tags" {
       min_version = "1.0.0"
     }
     mod "github.com/turbot/flowpipe-mod-detect-correct" {
-      version = "1.0.0-rc.0"
+      version = "1.0.0"
     }
     mod "github.com/turbot/flowpipe-mod-azure" {
-      version = "v1.0.0-rc.1"
+      version = "1.0.0"
     }
   }
 }
