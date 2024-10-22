@@ -1,6 +1,7 @@
 pipeline "correct_resources_with_incorrect_tags" {
   title       = "Correct resources with incorrect tags"
   description = "Correct resources with incorrect tags"
+  tags        = { folder = "Internal" }
 
   param "items" {
     type = list(object({
@@ -8,7 +9,7 @@ pipeline "correct_resources_with_incorrect_tags" {
       id              = string
       region          = string
       subscription_id = string
-      cred            = string
+      conn            = string
       old_tags        = map(string)
       new_tags        = map(string)
     }))
@@ -16,7 +17,7 @@ pipeline "correct_resources_with_incorrect_tags" {
   }
 
   param "notifier" {
-    type        = string
+    type        = notifier
     description = local.description_notifier
     default     = var.notifier
   }
@@ -25,10 +26,11 @@ pipeline "correct_resources_with_incorrect_tags" {
     type        = string
     description = local.description_notifier_level
     default     = var.notification_level
+    enum        = local.notification_level_enum
   }
 
   param "approvers" {
-    type        = list(string)
+    type        = list(notifier)
     description = local.description_approvers
     default     = var.approvers
   }
@@ -37,6 +39,7 @@ pipeline "correct_resources_with_incorrect_tags" {
     type        = string
     description = local.description_default_action
     default     = var.incorrect_tags_default_action
+    enum        = local.incorrect_tags_default_action_enum
   }
 
   step "pipeline" "correct_one" {
@@ -48,7 +51,7 @@ pipeline "correct_resources_with_incorrect_tags" {
       id                 = each.value.id
       region             = each.value.region
       subscription_id    = each.value.subscription_id
-      cred               = each.value.cred
+      conn               = connection.azure[each.value.conn]
       old_tags           = each.value.old_tags
       new_tags           = each.value.new_tags
       notifier           = param.notifier
@@ -62,6 +65,7 @@ pipeline "correct_resources_with_incorrect_tags" {
 pipeline "correct_one_resource_with_incorrect_tags" {
   title       = "Correct one resource with incorrect tags"
   description = "Correct one resource with incorrect tags"
+  tags        = { folder = "Internal" }
 
   param "title" {
     type        = string
@@ -83,9 +87,9 @@ pipeline "correct_one_resource_with_incorrect_tags" {
     description = "ID of the subscription containing the resource"
   }
 
-  param "cred" {
+  param "conn" {
     type        = string
-    description = "Credential identifier"
+    description = local.description_connection
   }
 
   param "old_tags" {
@@ -95,11 +99,11 @@ pipeline "correct_one_resource_with_incorrect_tags" {
 
   param "new_tags" {
     type        = map(string)
-    description = "Map of tags the correction should result in" 
+    description = "Map of tags the correction should result in"
   }
 
   param "notifier" {
-    type        = string
+    type        = notifier
     description = local.description_notifier
     default     = var.notifier
   }
@@ -108,10 +112,11 @@ pipeline "correct_one_resource_with_incorrect_tags" {
     type        = string
     description = local.description_notifier_level
     default     = var.notification_level
+    enum        = local.notification_level_enum
   }
 
   param "approvers" {
-    type        = list(string)
+    type        = list(notifier)
     description = local.description_approvers
     default     = var.approvers
   }
@@ -120,6 +125,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
     type        = string
     description = local.description_default_action
     default     = var.incorrect_tags_default_action
+    enum        = local.incorrect_tags_default_action_enum
   }
 
   step "transform" "display_name" {
@@ -148,7 +154,7 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           label        = "Skip"
           value        = "skip"
           style        = local.style_info
-          pipeline_ref = local.pipeline_optional_message
+          pipeline_ref = detect_correct.pipeline.optional_message
           pipeline_args = {
             notifier = param.notifier
             send     = param.notification_level == local.level_verbose
@@ -157,13 +163,13 @@ pipeline "correct_one_resource_with_incorrect_tags" {
           success_msg = ""
           error_msg   = ""
         }
-       "apply" = {
+        "apply" = {
           label        = "Apply"
           value        = "apply"
           style        = local.style_ok
-          pipeline_ref = local.pipeline_azure_tag_resource
+          pipeline_ref = azure.pipeline.tag_resources
           pipeline_args = {
-            cred        = param.cred
+            conn        = param.conn
             resource_id = param.id
             tags        = param.new_tags
             incremental = false

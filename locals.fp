@@ -16,13 +16,18 @@ locals {
   style_alert   = "alert"
 }
 
+locals {
+  notification_level_enum = ["info", "verbose", "error"]
+}
+
 // Common Texts
 locals {
   description_database         = "Database connection string."
   description_approvers        = "List of notifiers to be used for obtaining action/approval decisions."
+  description_connection       = "Name of the Azure connection to be used for any authenticated actions."
   description_max_concurrency  = "The maximum concurrency to use for responding to detection items."
   description_notifier         = "The name of the notifier to use for sending notification messages."
-  description_notifier_level   = "The verbosity level of notification messages to send. Valid options are 'verbose', 'info', 'error'."
+  description_notifier_level   = "The verbosity level of notification messages to send."
   description_default_action   = "The default action to use for the detected item, used if no input is provided."
   description_enabled_actions  = "The list of enabled actions to provide to approvers for selection."
   description_trigger_enabled  = "If true, the trigger is enabled."
@@ -30,10 +35,10 @@ locals {
   description_items            = "A collection of detected resources to run corrective actions against."
 }
 
-// Pipeline References
+// Default action enum
+
 locals {
-  pipeline_optional_message    = detect_correct.pipeline.optional_message
-  pipeline_azure_tag_resource  = azure.pipeline.tag_resources
+  incorrect_tags_default_action_enum = ["notify", "skil", "apply"]
 }
 
 locals {
@@ -56,7 +61,7 @@ with tags as (
     id,
     region,
     subscription_id,
-    sp_connection_name as cred,
+    sp_connection_name as conn,
     coalesce(tags, '{}'::jsonb) as tags,
     t.key,
     t.value
@@ -149,7 +154,7 @@ select * from (
     t.id,
     t.region,
     t.subscription_id,
-    t.cred,
+    t.conn,
     t.tags as old_tags,
     jsonb_object_agg(uv.new_key, uv.updated_value) as new_tags
   from
@@ -161,7 +166,7 @@ select * from (
       select 1 from remove_tags rt where rt.id = uv.id and rt.key = uv.new_key
     )
   group by
-    t.title, t.id, t.region, t.subscription_id, t.cred, t.tags
+    t.title, t.id, t.region, t.subscription_id, t.conn, t.tags
 ) result
 where old_tags != new_tags;
   EOQ

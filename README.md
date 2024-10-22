@@ -29,20 +29,20 @@ steampipe plugin install azure
 
 Steampipe will automatically use your default Azure credentials. Optionally, you can [setup multiple subscriptions](https://hub.steampipe.io/plugins/turbot/azure#multi-subscription-connections) or [configure specific Azure credentials](https://hub.steampipe.io/plugins/turbot/azure#configuring-azure-credentials).
 
-Create a [`credential_import`](https://flowpipe.io/docs/reference/config-files/credential_import) resource to import your Steampipe Azure connections:
+Create a [`connection_import`](https://flowpipe.io/docs/reference/config-files/connection_import) resource to import your Steampipe Azure connections:
 
 ```sh
 vi ~/.flowpipe/config/azure.fpc
 ```
 
 ```hcl
-credential_import "azure" {
+connection_import "azure" {
   source      = "~/.steampipe/config/azure.spc"
   connections = ["*"]
 }
 ```
 
-For more information on credentials in Flowpipe, please see [Managing Credentials](https://flowpipe.io/docs/run/credentials).
+For more information on connections in Flowpipe, please see [Managing Connections](https://flowpipe.io/docs/run/connections).
 
 Clone the mod:
 
