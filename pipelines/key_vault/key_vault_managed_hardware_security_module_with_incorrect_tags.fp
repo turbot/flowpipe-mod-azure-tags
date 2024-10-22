@@ -37,6 +37,7 @@ pipeline "detect_and_correct_key_vault_managed_hardware_security_module_with_inc
     type        = string
     description = local.description_notifier_level
     default     = var.notification_level
+    enum        = local.notification_level_enum
   }
 
   param "approvers" {

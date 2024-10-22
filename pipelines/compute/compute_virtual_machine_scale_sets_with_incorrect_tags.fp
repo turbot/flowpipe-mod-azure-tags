@@ -37,6 +37,7 @@ pipeline "detect_and_correct_compute_virtual_machine_scale_sets_with_incorrect_t
     type        = string
     description = local.description_notifier_level
     default     = var.notification_level
+    enum        = local.notification_level_enum
   }
 
   param "approvers" {
