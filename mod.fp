@@ -11,6 +11,9 @@ mod "azure_tags" {
     image       = "/images/mods/turbot/azure-tags-social-graphic.png"
   }
   require {
+     flowpipe {
+      min_version = "1.0.0"
+    }
     mod "github.com/turbot/flowpipe-mod-detect-correct" {
       version = "1.0.0"
     }
